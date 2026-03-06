@@ -1,0 +1,70 @@
+{
+  "entities": {
+    "UserProfile": {
+      "title": "UserProfile",
+      "description": "Stores merchant settings like WhatsApp number, logo URL, and default profit margin.",
+      "type": "object",
+      "properties": {
+        "whatsappNumber": {
+          "type": "string",
+          "description": "The merchant's WhatsApp number for the catalog."
+        },
+        "logoUrl": {
+          "type": "string",
+          "description": "URL to the merchant's logo."
+        },
+        "defaultMargin": {
+          "type": "number",
+          "description": "Default profit margin percentage (e.g., 20 for 20%)."
+        },
+        "storeName": {
+          "type": "string",
+          "description": "Name of the store."
+        }
+      },
+      "required": ["storeName"]
+    },
+    "Product": {
+      "title": "Product",
+      "description": "A product listed by the merchant.",
+      "type": "object",
+      "properties": {
+        "uid": {
+          "type": "string",
+          "description": "The ID of the user who owns this product."
+        },
+        "name": {
+          "type": "string",
+          "description": "Name of the product."
+        },
+        "originalPrice": {
+          "type": "number",
+          "description": "Original price in the base currency (e.g., USD)."
+        },
+        "baseCurrency": {
+          "type": "string",
+          "description": "The currency of the original price (e.g., USD)."
+        },
+        "createdAt": {
+          "type": "timestamp",
+          "description": "When the product was added."
+        }
+      },
+      "required": ["uid", "name", "originalPrice", "baseCurrency", "createdAt"]
+    }
+  },
+  "firestore": {
+    "/users/{userId}": {
+      "schema": {
+        "$ref": "#/entities/UserProfile"
+      },
+      "description": "User profiles containing merchant settings."
+    },
+    "/products/{productId}": {
+      "schema": {
+        "$ref": "#/entities/Product"
+      },
+      "description": "Products added by merchants."
+    }
+  }
+}

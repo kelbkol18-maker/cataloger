@@ -1,0 +1,5 @@
+{
+  "name": "Istanbul Merchant Cataloger",
+  "description": "A web app for Istanbul merchants to convert USD prices to TRY with a profit margin, and generate PDF catalogs from images or spreadsheets.",
+  "requestFramePermissions": []
+}
